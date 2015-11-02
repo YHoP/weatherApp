@@ -140,9 +140,6 @@ public class WeatherActivity extends AppCompatActivity {
                     }
                 }
 
-
-
-
                 JSONObject mainInfo = jsonObject.getJSONObject("main");
                 String temp = mainInfo.getString("temp");
                 String humid = mainInfo.getString("humidity");
@@ -153,25 +150,18 @@ public class WeatherActivity extends AppCompatActivity {
                 txtTemperature.setText(Math.round(tempF) + "");
                 txtHumidityValue.setText(humid + "%");
 
-                try {
-                    JSONObject rain = jsonObject.getJSONObject("rain");
-                    String txtRain = rain.getString("3h");
-                    double doubleRain = Double.parseDouble(txtRain);
-                    txtPrecipValue.setText(Math.round(doubleRain)+"\"");
-                    Toast.makeText(getApplicationContext(), "Rain:" + doubleRain, Toast.LENGTH_LONG).show();
-                } catch (JSONException e) {
-                    txtPrecipValue.setText("0 \"");
-                }
-//                String rainInfo = jsonObject.getString("rain");
-//                Log.i("Rain content", rainInfo);
+               try{
+                   JSONObject snowInfo = jsonObject.getJSONObject("snow");
+                   getPrecip(snowInfo);
+               }catch (JSONException e){
+                   try{
+                       JSONObject rainInfo = jsonObject.getJSONObject("rain");
+                       getPrecip(rainInfo);
+                   }catch (JSONException d){
+                       txtPrecipValue.setText("0\"");
+                   }
 
-
-
-
-
-
-
-
+               }
 
             } catch (JSONException e) {
                 Toast.makeText(getApplicationContext(), "Could not find the weather. Please try again.", Toast.LENGTH_LONG).show();
@@ -179,5 +169,18 @@ public class WeatherActivity extends AppCompatActivity {
             }
 
         }
+    }
+
+    private void getPrecip(JSONObject precip) {
+        String txtPrecip = null;
+        try {
+            txtPrecip = precip.getString("3h");
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        double doublePrecip = Double.parseDouble(txtPrecip);
+        txtPrecipValue.setText(Math.round(doublePrecip) + "\"");
+
     }
 }

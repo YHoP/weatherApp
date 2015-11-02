@@ -119,7 +119,6 @@
                 android:layout_height="wrap_content"
                 android:text="--"
                 android:id="@+id/txtPrecipValue"
-                android:allowUndo="false"
                 android:gravity="center_horizontal"
                 android:textColor="@android:color/white"
                 android:textSize="24sp"/>
@@ -132,9 +131,10 @@
         android:id="@+id/progressBar"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_alignBottom="@+id/imgRefresh"/>
+        android:layout_alignBottom="@+id/imgRefresh"
+        android:paddingTop="16dp"/>
 
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/imgRefresh"

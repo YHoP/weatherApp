@@ -51,7 +51,7 @@ public class WeatherActivity extends AppCompatActivity {
         Bundle extras = intent.getExtras();
         cityName = extras.getString("cityName");
 
-        txtLocation.setText(cityName);
+        // txtLocation.setText(cityName);
 
         findWeather(cityName);
 
@@ -139,6 +139,9 @@ public class WeatherActivity extends AppCompatActivity {
                         // imgIcon.setImageDrawable(drawable);
                     }
                 }
+
+                String jsonName = jsonObject.getString("name");
+                txtLocation.setText(jsonName);
 
                 JSONObject mainInfo = jsonObject.getJSONObject("main");
                 String temp = mainInfo.getString("temp");

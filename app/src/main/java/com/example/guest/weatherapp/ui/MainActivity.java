@@ -1,4 +1,4 @@
-package com.example.guest.weatherapp;
+package com.example.guest.weatherapp.ui;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,6 +13,8 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.guest.weatherapp.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;

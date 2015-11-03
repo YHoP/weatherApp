@@ -9,6 +9,8 @@ import android.util.Log;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Bind(R.id.txtDescription) TextView txtDescription;
     @Bind(R.id.txtHumidityValue) TextView txtHumidityValue;
     @Bind(R.id.txtPrecipValue) TextView txtPrecipValue;
+    @Bind(R.id.imgRefresh) ImageView imgRefresh;
 
 
 
@@ -51,6 +54,17 @@ public class WeatherActivity extends AppCompatActivity {
         // txtLocation.setText(cityName);
 
         findWeather(cityName);
+
+        imgRefresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                findWeather(cityName);
+
+                imgRefresh.animate()
+                        .rotationBy(3600f)
+                        .setDuration(2000);
+            }
+        });
 
     }
 

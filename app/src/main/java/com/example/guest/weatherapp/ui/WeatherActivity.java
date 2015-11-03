@@ -2,16 +2,13 @@ package com.example.guest.weatherapp.ui;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import android.view.View;
-import android.view.inputmethod.InputMethodManager;
+
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,7 +32,7 @@ public class WeatherActivity extends AppCompatActivity {
     @Bind(R.id.txtLocation) TextView txtLocation;
     @Bind(R.id.txtTemperature)TextView txtTemperature;
     @Bind(R.id.imgIcon) ImageView imgIcon;
-    @Bind(R.id.txtCurrentTime) TextView txtCurrentTime;
+    @Bind(R.id.txtDescription) TextView txtDescription;
     @Bind(R.id.txtHumidityValue) TextView txtHumidityValue;
     @Bind(R.id.txtPrecipValue) TextView txtPrecipValue;
 
@@ -126,18 +123,15 @@ public class WeatherActivity extends AppCompatActivity {
                 for (int i = 0; i <arr.length(); i++) {
                     JSONObject jsonPart = arr.getJSONObject(i);
 
-                    String main = "";
-                    String description = "";
+                    String description = jsonPart.getString("description");
+                    txtDescription.setText(description);
 
-                    main = jsonPart.getString("main");
-                    description = jsonPart.getString("description");
 
-                    if(main != "" && description != "") {
-                        // message += main + ": " + description + "\r\n";
-
-                        // Drawable drawable = getResources().getDrawable(main);
-                        // imgIcon.setImageDrawable(drawable);
-                    }
+                    String iconID = jsonPart.getString("icon");
+//                    Toast.makeText(getApplicationContext(), "icon text?: " + iconID, Toast.LENGTH_LONG).show();
+                    Context context = imgIcon.getContext();
+                    int imageResource = context.getResources().getIdentifier("img"+iconID, "drawable", context.getPackageName());
+                    imgIcon.setImageResource(imageResource);
                 }
 
                 String jsonName = jsonObject.getString("name");

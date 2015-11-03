@@ -37,7 +37,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/txtCurrentTime"
+        android:id="@+id/txtDescription"
         android:layout_above="@+id/imgDegree"
         android:layout_centerHorizontal="true"
         android:textColor="#80ffffff"
@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:text="--"
         android:id="@+id/txtLocation"
-        android:layout_above="@+id/txtCurrentTime"
+        android:layout_above="@+id/txtDescription"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="60dp"
         android:textColor="@android:color/white"
@@ -62,7 +62,7 @@
         android:layout_alignBottom="@+id/txtLocation"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/cloudy"
+        android:src="@drawable/wind"
         android:layout_marginLeft="20dp"/>
 
     <LinearLayout

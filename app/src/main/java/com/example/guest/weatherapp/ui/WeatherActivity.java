@@ -63,6 +63,25 @@ public class WeatherActivity extends AppCompatActivity {
                 imgRefresh.animate()
                         .rotationBy(3600f)
                         .setDuration(2000);
+
+                txtTemperature.animate()
+                        .translationXBy(1000f)
+                        .translationYBy(1000f)
+                        .rotationBy(3600f)
+                        .setDuration(2000);
+
+                txtHumidityValue.animate()
+                        .translationZBy(-1000f)
+                        .translationYBy(1000f)
+                        .rotationBy(3600f)
+                        .setDuration(2000);
+
+                txtPrecipValue.animate()
+                        .translationXBy(1000f)
+                        .translationYBy(1000f)
+                        .rotationBy(3600f)
+                        .setDuration(2000);
+
             }
         });
 
